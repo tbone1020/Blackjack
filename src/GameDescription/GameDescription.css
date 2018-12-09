@@ -1,0 +1,15 @@
+h4 {
+	font-size: 15px;
+	font-weight: 500;
+}
+.game-description {
+	padding-top: 15px;
+}
+.game-description ul {
+	list-style-type: decimal;
+	padding-top: 10px;
+}
+.game-description li {
+	padding:5px 0 5px;
+	margin-left: 40px;
+}
