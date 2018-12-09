@@ -1,3 +1,5 @@
+import '../node_modules/normalize.css/normalize.css';
+import '../node_modules/reset-css/reset.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
