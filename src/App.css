@@ -1,3 +1,13 @@
+
+body{
+	background: url('images/table-felt.png');
+	background-size: contain;
+	background-repeat: repeat;
+	color:white;
+}
+strong {
+	font-weight: 700;
+}
 .container {
 	width: 90%;
 	margin: auto;

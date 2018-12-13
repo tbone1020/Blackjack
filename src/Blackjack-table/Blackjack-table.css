@@ -1,10 +1,26 @@
 .blackjack-table {
-	background: url('../images/blackjack-mat.png');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center; 
-	border: 2px solid #000;
-	padding: 15px;
-	margin-top: 15px;
+    border-top: 1px solid white;
+    margin: 15px 0 45px;
+    padding-bottom: 70px;
+    position: relative;
+}
+.betting-squares {
+    background: url(../images/blackjack-table-design.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    padding: 150px 15px 0;
 	height: 500px;
+}
+.dot {
+	position: absolute;
+	background:white;
+	width: 10px;
+	height: 10px;
+	left:50%;
+	margin-left:-3px;
+	bottom:130px;
+}
+.hide-count {
+    display: none;
 }
