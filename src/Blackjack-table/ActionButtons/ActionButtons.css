@@ -15,3 +15,19 @@
 .action-buttons-container button:not(:last-child) {
 	margin-right:10px;
 }
+.bet-amount {
+	text-align: right;
+	padding-bottom: 15px;
+}
+
+.bet-amount label {
+    padding-right: 10px;
+    font-size: 19px;
+}	
+
+.bet-amount input {
+	border:0;
+	height: 42px;
+	width: 70px;
+	padding: 0 10px;
+}

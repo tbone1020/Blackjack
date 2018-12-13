@@ -1,7 +1,7 @@
 .blackjack-table {
     border-top: 1px solid white;
     margin: 15px 0 45px;
-    padding-bottom: 70px;
+    padding-bottom: 140px;
     position: relative;
 }
 .betting-squares {
@@ -19,7 +19,7 @@
 	height: 10px;
 	left:50%;
 	margin-left:-3px;
-	bottom:130px;
+	bottom:205px;
 }
 .hide-count {
     display: none;

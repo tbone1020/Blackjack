@@ -16,8 +16,17 @@ class BlackjackTable extends Component {
 		this.state = {
 			totalMoney: 500,
 			isCounting: false,
+			deck_id: null,
 			count: 0
 		}
+	}
+
+	componentDidMount(){
+		fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=2')
+			.then(response => response.json())
+			.then(json=>{
+				this.setState({ deck_id: json.deck_id });
+			})
 	}
 
 	setParentState(obj){
@@ -30,6 +39,7 @@ class BlackjackTable extends Component {
 			<div className="betting-squares">
 				<div className="dot"></div>
 				<ActionButtons {...this.state} stateHandle={this.setParentState} />
+
 			</div>
 		</div>);
 	}
