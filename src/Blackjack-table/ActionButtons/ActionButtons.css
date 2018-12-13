@@ -1,0 +1,33 @@
+.action-buttons-container {
+	position: absolute;
+	right: 15px;	
+	bottom: 0;	
+}
+
+.action-buttons-container button {
+	border:2px solid white;
+	cursor: pointer;
+	background: transparent;
+	color: white;
+	padding: 10px 15px
+}
+
+.action-buttons-container button:not(:last-child) {
+	margin-right:10px;
+}
+.bet-amount {
+	text-align: right;
+	padding-bottom: 15px;
+}
+
+.bet-amount label {
+    padding-right: 10px;
+    font-size: 19px;
+}	
+
+.bet-amount input {
+	border:0;
+	height: 42px;
+	width: 70px;
+	padding: 0 10px;
+}
