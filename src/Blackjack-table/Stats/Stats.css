@@ -1,0 +1,13 @@
+.stats-container {
+    padding: 15px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.stats-list {
+	font-size: 20px;
+}
+
+.stats-list li {
+	padding: 4px 0;
+}

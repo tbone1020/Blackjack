@@ -1,0 +1,17 @@
+.action-buttons-container {
+	position: absolute;
+	right: 15px;	
+	bottom: 0;	
+}
+
+.action-buttons-container button {
+	border:2px solid white;
+	cursor: pointer;
+	background: transparent;
+	color: white;
+	padding: 10px 15px
+}
+
+.action-buttons-container button:not(:last-child) {
+	margin-right:10px;
+}
