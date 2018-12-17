@@ -1,19 +1,25 @@
 .action-buttons-container {
 	position: absolute;
 	right: 15px;	
+	text-align: right;
 	bottom: 0;	
 }
-
+.btn-wrapper {
+	height: 45px;
+}
 .action-buttons-container button {
+	display: inline-block;
 	border:2px solid white;
 	cursor: pointer;
 	background: transparent;
 	color: white;
 	padding: 10px 15px
 }
-
-.action-buttons-container button:not(:last-child) {
-	margin-right:10px;
+.extended-btn {
+	width: 170px;
+}
+.action-buttons-container button:not(:first-child) {
+	margin-left:10px;
 }
 .bet-amount {
 	text-align: right;
@@ -30,4 +36,18 @@
 	height: 42px;
 	width: 70px;
 	padding: 0 10px;
+}
+.card-wrapper {
+    display: inline-block;
+    vertical-align: top;
+    position: absolute;
+    bottom: 10px;
+    height: 110px;
+    width: 80px;
+}
+.card-wrapper img {
+	width: 100%;
+}
+.hide-btn {
+	display: none !important;
 }
