@@ -9,7 +9,9 @@ class ActionButtons extends Component {
 		this.state = {
 			stage:'deal',
 			betAmount: null,
+			additionalCardClasses:'',
 			message:''
+
 		}
 	}
 
@@ -22,45 +24,62 @@ class ActionButtons extends Component {
 		}
 	}
 
-	convertToCardsArray(obj){
-
-	}
-
-	convertSrcToPhysicalImage(src){
-
-	}
-
-	addCardsValue(){
-
-	}
-
 	getCards(numberOfCards){
 		return fetch(`https://deckofcardsapi.com/api/deck/${this.props.deck_id}/draw/?count=${numberOfCards}`)
 			.then(response => response.json())
 			.then(json => json.cards);
 	}
 
+	determindCardValue(cardVal){
+		if(cardVal === "ACE") return [1,11];
+		const tens = ["10","JACK","QUEEN","KING"];
+		if(tens.indexOf(cardVal) !== -1){ 
+			return 10;
+		} else {
+			return parseInt(cardVal);
+		}
+	}	
+
 	dealCards(){
-		const cardsArray = [];
-		const dealNumOfCards = 5;
+		const dealNumOfCards = 4;
 		const betAmount = this.state.betAmount;
+		let playerCardValues = 0;
+		let dealerCardValues = 0;
 
 		// 1. Deal 4 cards
 		if(betAmount !== null && betAmount !== ''){		
+			// Also have to lock the the bet amount
 			this.getCards(dealNumOfCards).then(cards => {
+				
 				// 2. Grab all there values and add to the count and the players and dealers values.
-				console.log(cards); // cards
-				for(let i = 0;i<cards.length;i++){
-					cardsArray.push(cards[i].images.png);
-				}
+				const sourceArray = cards.map((cardObj,cardIndex)=>{
+
+					/*  TO DO: You created the card object. Need to display the cards on the page
+						with the proper classes
+
+				   	How will I handle Aces?
+				   	------ 
+					store image properties for later use*/
+					// let cardValue = cardObj.
+					let cardValue = this.determindCardValue(cardObj.value);
+					if(cardIndex % 2 === 0) {
+						return {src:cardObj.image, classes:'card to-player',value:cardValue};
+					} else {
+						return {src:cardObj.image, classes:'card to-dealer',value:cardValue};
+					}
+					console.log(cardObj);
+
+				});
+				console.log(sourceArray);
 				// convert to an array
-				this.props.stateHandle({cardArr: cardsArray});
+				this.props.parentState({cardValues: sourceArray});
 			});
 			this.setState({message:''});
+			// 3. Hide "Deal" button and show the rest of the action buttons
+			this.setState({stage:'player'});
 		} else {
 			this.setState({message:'Enter a bet amount'});
 		}
-		// 3. Hide "Deal" button and show the rest of the action buttons
 	}
 
 	hit(){

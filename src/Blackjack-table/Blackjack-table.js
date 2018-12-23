@@ -4,11 +4,7 @@ import ActionButtons from './ActionButtons/ActionButtons';
 import './Blackjack-table.css';
 
 
-/* 
-Have two components. 
-1. A componenet for the money and count
-2. A component for the hit, stand, split, and Double down buttons
-*/
+
 class BlackjackTable extends Component {
 	constructor(props){
 		super(props);
@@ -17,7 +13,9 @@ class BlackjackTable extends Component {
 			totalMoney: 500,
 			isCounting: false,
 			deck_id: null,
-			cardArr: [],
+			dealersCardValue:0,
+			playersCardValue:0,
+			cardSoruces: [],
 			offset: -25,
 			count: 0
 		}
@@ -35,19 +33,16 @@ class BlackjackTable extends Component {
 		this.setState(obj);
 	}
 
+	// Just map through the array, don't do any JavaScript logic here
 	render() {
 		return (<div className="blackjack-table">
 			<Stats {...this.state} />
-			<div className="dealers-hand">
-				{this.state.cardArr.map((a,b)=>{
-					let newOffset = this.state.offset += 25;
-					console.log(newOffset);
-					return <div key={b} style={{left: this.state.offset}} className="card-wrapper"><img src={a}/></div>
-				})}
-			</div>
+			{this.state.cardSoruces.map(src=>{
+				return src;
+			})}
 			<div className="betting-squares">
 				<div className="dot"></div>
-				<ActionButtons {...this.state} stateHandle={this.updateParentStateObj} />
+				<ActionButtons {...this.state} parentState={this.updateParentStateObj} />
 
 			</div>
 		</div>);
