@@ -9,9 +9,9 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
-    padding: 50px 15px 0;
+    padding: 100px 0 0;
     margin: auto;
-    max-width: 1200px;
+    width: 1120px;
 	height: 500px;
 }
 .dot {
@@ -31,12 +31,11 @@
     font-size: 17px;
     padding-bottom: 10px;
 }
-.dealers-hand {
-    border:3px solid white;
-    position: absolute;
-    left:50%;
-    top:45px;
+.dealing-start-point {
+    border: 3px solid white;
+    right: 60px;
+    top: 25px;
     margin-left: -50px;
-    width: 100px;
-    height: 130px;
+    width: 60px;
+    height: 90px;
 }

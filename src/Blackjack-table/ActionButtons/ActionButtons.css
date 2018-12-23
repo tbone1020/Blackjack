@@ -37,11 +37,18 @@
 	width: 70px;
 	padding: 0 10px;
 }
+.add-transition {
+	-webkit-transition: all 1000ms ease-out;
+	-moz-transition: all 1000ms ease-out;
+	-ms-transition: all 1000ms ease-out;
+	-o-transition: all 1000ms ease-out;
+	transition: all 1000ms ease-out;
+}
 .card-wrapper {
     display: inline-block;
     vertical-align: top;
     position: absolute;
-    bottom: 10px;
+	top: 20px;
     height: 110px;
     width: 80px;
 }
