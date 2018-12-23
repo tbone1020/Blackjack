@@ -75,7 +75,7 @@ class ActionButtons extends Component {
 				this.props.parentState({cardValues: sourceArray});
 			});
 			this.setState({message:''});
-			// 3. Hide "Deal" button and show the rest of the action buttons
+			// 3. Hide "Deal" then show the rest of the action buttons
 			this.setState({stage:'player'});
 		} else {
 			this.setState({message:'Enter a bet amount'});
