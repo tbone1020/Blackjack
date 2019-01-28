@@ -9,9 +9,10 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
-    padding: 100px 0 0;
+    /*padding: 100px 0 0;*/
+    padding: 50px 0 0;
     margin: auto;
-    width: 1120px;
+    max-width: 1120px;
 	height: 500px;
 }
 .dot {
@@ -38,4 +39,11 @@
     margin-left: -50px;
     width: 60px;
     height: 90px;
+}
+
+.card {
+    position: relative;
+    left: 50%;
+    margin-left: -50px;
+    width:200px;
 }

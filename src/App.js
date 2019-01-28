@@ -5,7 +5,7 @@ import BlackjackTable from './Blackjack-table/Blackjack-table';
 
 import './App.css';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <div className="container">
@@ -15,5 +15,3 @@ class App extends Component {
       </div>);
   }
 }
-
-export default App;
