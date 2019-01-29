@@ -30,7 +30,7 @@ export default class BuildPhysicalCard extends React.Component {
       } else {
           return(<div className="card">
             Dealer's Hole Card {index} {value} {image} {classes}
-      </div>);}
+      </div>);
     }
   }
 }
