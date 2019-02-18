@@ -4,34 +4,30 @@
     padding-bottom: 100px;
     position: relative;
 }
+
 .betting-squares {
     background: url(../images/blackjack-table-design.png);
-    background-size: contain;
+    /*background: url(../images/blackjack-mat-cropped.png);*/
+    background-size: 130%;
     background-repeat: no-repeat;
     background-position: bottom;
     /*padding: 100px 0 0;*/
-    padding: 50px 0 0;
-    margin: auto;
+    padding: 80px 0 0;
+    margin: 50px auto 0;
     max-width: 1120px;
-	height: 500px;
+    height: 500px;
 }
-.dot {
-	position: absolute;
-	background:white;
-	width: 10px;
-	height: 10px;
-	left:50%;
-	margin-left:-3px;
-	bottom:165px;
-}
+
 .hide-count {
     display: none;
 }
+
 .bet-message {
     color: #ff5454;
     font-size: 17px;
     padding-bottom: 10px;
 }
+
 .dealing-start-point {
     border: 3px solid white;
     right: 60px;
@@ -41,9 +37,81 @@
     height: 90px;
 }
 
+/* Card's animation */
 .card {
-    position: relative;
-    left: 50%;
-    margin-left: -50px;
-    width:200px;
+    width: 90px;
+    position: absolute;
+    right: 50%;
+    opacity: 0;
+    right: 10px;
+    top: 10px;
+    position: absolute;
+}
+
+.card img {
+    width: 100%;
+}
+
+/* 300ms seems to be a nice speed */
+.to-dealer {
+    -webkit-animation: toDealer 300ms;
+    animation: toDealer 300ms;
+}
+
+.to-player {
+    -webkit-animation: toPlayer 300ms;
+    animation: toPlayer 300ms;
+}
+
+.to-dealer,
+.to-player {
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes toPlayer {
+    0% {right: 10px;top: 10px;}
+    20% {opacity: 1;}
+    100% {right: 50%;top: 525px;}
+}
+
+@keyframes toPlayer {
+    0% {
+        right: 10px;
+        top: 10px;
+        margin-top: 0;
+        margin-right: 0;
+    }
+    20% {opacity: 1;}
+    100% {right: 50%;top: 525px;opacity: 1;}
+}
+
+@-webkit-keyframes toDealer {
+    0% {
+        right: 10px;
+        top: 10px;
+        opacity: 0;
+        margin-top: 0;
+        margin-right: 0;
+    }
+
+    20% {opacity: 1;}
+    50% {top: 50px;}
+    100% {right: 50%;top: 15px;opacity: 1;}
+}
+
+/* Standard syntax */
+
+@keyframes toDealer {
+    0% {
+        right: 10px;
+        top: 10px;
+        margin-top: 0;
+        margin-right: 0;
+    }
+    20% {opacity: 1;}
+    50% {top: 50px;}
+    100% {right: 50%;top: 15px;opacity: 1;}
 }

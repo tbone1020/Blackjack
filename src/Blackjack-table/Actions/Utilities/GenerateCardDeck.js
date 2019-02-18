@@ -11,8 +11,4 @@ export default class GenerateCardDeck extends Component {
         return deck.deck_id;
       })
   } 
-
-  shuffleDeck(deck_id){
-
-  }
 }
