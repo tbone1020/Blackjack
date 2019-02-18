@@ -42,7 +42,7 @@ class Actions extends Component {
     
     render() {
 
-        const { stage, } = this.state;
+        const { stage } = this.state;
         return (<div className="action-buttons-container">
 			<div className="bet-message">{this.state.message}</div>
 			<div className="bet-amount">

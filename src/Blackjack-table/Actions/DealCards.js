@@ -1,7 +1,7 @@
 import React from 'react';
-import CardDeckStorage from './ActionUtilities/CardDeckStorage';
-import CardProperties from './ActionUtilities/CardProperties';
-import BuildCardsStyles from './ActionUtilities/BuildCardsStyles';
+import CardDeckStorage from './Utilities/CardDeckStorage';
+import CardProperties from './Utilities/CardProperties';
+import BuildCardsStyles from './Utilities/BuildCardsStyles';
 
 /*The key is to use CSS3 Keyframe animations */
 /*For the card that is flipped over at the end of the deal,
@@ -17,9 +17,9 @@ export default class DealCards extends React.Component {
         super(props);
 
     }
-    grabIntialDealCards() {
-        let intialCards = CardDeckStorage.grabCards(4);
 
+    grabIntialDealCards() {
+        const intialCards = CardDeckStorage.grabCards(4);
         const buildInitialCards = intialCards.map((card, index) => {
             if (index % 2 === 0) {
                 // Player
