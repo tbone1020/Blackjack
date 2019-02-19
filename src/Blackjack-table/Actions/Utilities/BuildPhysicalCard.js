@@ -1,5 +1,5 @@
 import React from 'react';
-import cardBack from '../../../images/Card-back.png';
+import cardBack from '../../../images/Card-back-maldives.png';
 
 export default class BuildPhysicalCard extends React.Component {
     constructor(props) {
@@ -22,12 +22,8 @@ export default class BuildPhysicalCard extends React.Component {
         } else {
             // Dealers hole card
             return (<div style={styles} className={`${classes} card_${index}`}> 
-                    <div className="flip-card-front">
-                        <img src={cardBack} />
-                    </div>
-                    <div className="flip-card-back">
-                        <img src={image} alt="hole card" />
-                    </div>
+                    <div className="flip-card-front"> <img src={cardBack} /> </div>
+                    <div className="flip-card-back"> <img src={image} alt="hole card" /> </div>
                 </div>);
         }
     }
