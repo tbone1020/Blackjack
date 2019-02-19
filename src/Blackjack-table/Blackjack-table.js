@@ -5,7 +5,7 @@ import GenerateCardDeck from './Actions/Utilities/GenerateCardDeck';
 import BuildPhysicalCard from './Actions/Utilities/BuildPhysicalCard';
 import './Blackjack-table.css';
 
-class BlackjackTable extends Component {
+export default class BlackjackTable extends Component {
   constructor(props){
     super(props);
     this.updateBJTableState = this.updateBJTableState.bind(this);
@@ -50,4 +50,3 @@ class BlackjackTable extends Component {
   }
 }
 
-export default BlackjackTable;
