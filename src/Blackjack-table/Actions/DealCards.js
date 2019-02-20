@@ -3,18 +3,25 @@ import CardDeckStorage from './Utilities/CardDeckStorage';
 import CardProperties from './Utilities/CardProperties';
 import BuildCardsStyles from './Utilities/BuildCardsStyles';
 
-/* The key is to use CSS3 Keyframe animations */
-/* For the card that is flipped over at the end of the deal,
-Give it a class that waits a couple seconds and then flips is over.
-After this then I can set the state from deal to player 
-
-The dealer's face down card is called the "Hole" card
-The dealer's face up card is called the "Upcard" */
-
 export default class DealCards extends React.Component {
     constructor(props) {
         super(props);
-        
+    }
+
+    /* TODO: Check the bet amount and deal cards or display message.
+       Next, if "Hit" is clicked, deal the player a card */
+    checkBetAmount() {
+
+        const { betAmount, message, stage } = this.props;
+        if(betAmount > 0) {
+            this.grabIntialDealCards();
+        } else {
+            this.props.updateActionsState({
+                stage,
+                betAmount,
+                message: 'Please enter a bet amount',
+            });
+        }
     }
 
     grabIntialDealCards() {
@@ -34,6 +41,6 @@ export default class DealCards extends React.Component {
     }
 
     render() {
-        return (<button className={this.props.stage !== "deal" ? "hide-btn" : 'extended-btn'} onClick={()=>this.grabIntialDealCards()}>Deal</button>);
+        return (<button className={this.props.stage !== "deal" ? "hide-btn" : 'extended-btn'} onClick={()=>this.checkBetAmount()}>Deal</button>);
     }
 }

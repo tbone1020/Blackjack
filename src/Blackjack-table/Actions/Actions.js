@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DealCards from './DealCards';
+import Hit from './Hit';
 import './Actions.css';
 
 class Actions extends Component {
@@ -8,10 +9,15 @@ class Actions extends Component {
         super(props);
         this.state = {
             stage: 'deal',
-            betAmount: null,
+            betAmount: 0,
             message: ''
 
         }
+    }
+
+    updateActionsState(obj) {
+        console.log("Updating Actions State");
+        this.setState(obj);
     }
 
     preventValueExceeding(e) {
@@ -41,7 +47,7 @@ class Actions extends Component {
     }
     
     render() {
-
+        //  betAmount={this.state.betAmount}  stage={this.state.stage} 
         const { stage } = this.state;
         return (<div className="action-buttons-container">
 			<div className="bet-message">{this.state.message}</div>
@@ -50,8 +56,9 @@ class Actions extends Component {
 				<input name="betAmount" onChange={e=>this.preventValueExceeding(e)} type="number" min="5"/>
 			</div>
 			<div className="btn-wrapper">
-				<DealCards updateBJTableState={this.props.updateBJTableState}  deck_id={this.props.deck_id} stage={this.state.stage} />
-				<button className={stage !== "player" ? "hide-btn" : null} onClick={()=>this.hit()}>Hit</button>
+
+				<DealCards {...this.state} updateBJTableState={this.props.updateBJTableState} updateActionsState={this.updateActionsState} deck_id={this.props.deck_id} />
+				<Hit updateBJTableState={this.props.updateBJTableState} stage={this.state.stage} />
 				<button className={stage !== "player" ? "hide-btn" : null} onClick={()=>this.stand()}>Stand</button>
 				<button className={stage !== "player" ? "hide-btn" : null} onClick={()=>this.doubleDown()}>Double Down</button>
 				<button className={stage !== "player" ? "hide-btn" : null} onClick={()=>this.split()}>Split</button>
