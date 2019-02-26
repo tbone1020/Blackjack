@@ -11,7 +11,6 @@ export default class DealCards extends React.Component {
     /* TODO: Check the bet amount and deal cards or display message.
        Next, if "Hit" is clicked, deal the player a card */
     checkBetAmount() {
-
         const { betAmount, message, stage } = this.props;
         if(betAmount > 0) {
             this.grabIntialDealCards();
@@ -24,20 +23,30 @@ export default class DealCards extends React.Component {
         }
     }
 
+    updateBlackjackTableState() {
+        // Prevent side effects
+        this.props.updateBJTableState({cardsToDeal: buildInitialCards});
+    }
+
+    buildPlayersCards(grabbedCard) {
+        let playerStyles = BuildCardsStyles.updatePlayersStyles();
+        return CardProperties.BuildCardProperties(grabbedCard.value, grabbedCard.image, "card to-player", playerStyles);
+    }
+
+    buildDealersCards(grabbedCard) {
+        let dealerStyles = BuildCardsStyles.updateDealersStyles();
+        return CardProperties.BuildCardProperties(grabbedCard.value, grabbedCard.image, "card to-dealer", dealerStyles);
+    }
+
     grabIntialDealCards() {
-        const intialCards = CardDeckStorage.grabCards(4);
-        const buildInitialCards = intialCards.map((card, index) => {
+        const dequeuedCards = CardDeckStorage.grabCards(4);
+        const builtInitialCards = dequeuedCards.map((card, index) => {
             if (index % 2 === 0) {
-                // Player
-                let playerStyles = BuildCardsStyles.updatePlayersStyles();
-                return CardProperties.BuildCardProperties(card.value, card.image, "card to-player", playerStyles);
+                return this.buildPlayersCards(card);
             } else {
-                // Dealer
-                let dealerStyles = BuildCardsStyles.updateDealersStyles();
-                return CardProperties.BuildCardProperties(card.value, card.image, "card to-dealer", dealerStyles);
+                return this.buildDealersCards(card);
             }
         });
-        this.props.updateBJTableState({cardsToDeal: buildInitialCards});
     }
 
     render() {
