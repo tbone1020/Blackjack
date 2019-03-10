@@ -11,7 +11,7 @@ export default class Hit extends React.Component {
 
     dealCardToPlayer() {
         const hitCard = CardDeckStorage.grabCards(1);
-
+        console.log(hitCard);
     }
 
     render() {

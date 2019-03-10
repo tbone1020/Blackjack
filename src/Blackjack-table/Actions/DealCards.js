@@ -4,28 +4,39 @@ import CardProperties from './Utilities/CardProperties';
 import BuildCardsStyles from './Utilities/BuildCardsStyles';
 
 export default class DealCards extends React.Component {
+
     constructor(props) {
         super(props);
     }
 
-    /* TODO: Check the bet amount and deal cards or display message.
-       Next, if "Hit" is clicked, deal the player a card */
-    checkBetAmount() {
-        const { betAmount, message, stage } = this.props;
-        if(betAmount > 0) {
-            this.grabIntialDealCards();
+    buildCardsIfValidBet() {
+        if (this.props.betAmount > 0) {
+            this.grabAndBuildIntialDealCards();
         } else {
-            this.props.updateActionsState({
-                stage,
-                betAmount,
-                message: 'Please enter a bet amount',
-            });
+            this.displayInvalidBetMessage();
         }
     }
 
-    updateBlackjackTableState() {
-        // Prevent side effects
-        this.props.updateBJTableState({cardsToDeal: buildInitialCards});
+    displayInvalidBetMessage() {
+          
+        const { stage, betAmount } = this.props;
+        this.props.updateActionsState({
+            stage,
+            betAmount,
+            messageToPlayer: 'Please enter a bet amount',
+        });
+    }
+
+    grabAndBuildIntialDealCards() {
+        const dequeuedCards = CardDeckStorage.grabCards(4);
+        const builtInitialCards = dequeuedCards.map((card, index) => {
+            if (index % 2 === 0) {
+                return this.buildPlayersCards(card);
+            } else {
+                return this.buildDealersCards(card);
+            }
+        });
+        this.updateBlackjackTableState(builtInitialCards);
     }
 
     buildPlayersCards(grabbedCard) {
@@ -38,18 +49,11 @@ export default class DealCards extends React.Component {
         return CardProperties.BuildCardProperties(grabbedCard.value, grabbedCard.image, "card to-dealer", dealerStyles);
     }
 
-    grabIntialDealCards() {
-        const dequeuedCards = CardDeckStorage.grabCards(4);
-        const builtInitialCards = dequeuedCards.map((card, index) => {
-            if (index % 2 === 0) {
-                return this.buildPlayersCards(card);
-            } else {
-                return this.buildDealersCards(card);
-            }
-        });
+    updateBlackjackTableState(intialCardsForState) {
+        this.props.updateBJTableState({cardsToDeal: intialCardsForState});
     }
 
     render() {
-        return (<button className={this.props.stage !== "deal" ? "hide-btn" : 'extended-btn'} onClick={()=>this.checkBetAmount()}>Deal</button>);
+        return (<button className={this.props.stage !== "deal" ? "hide-btn" : 'extended-btn'} onClick={()=>this.buildCardsIfValidBet()}>Deal</button>);
     }
 }

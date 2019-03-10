@@ -10,13 +10,12 @@ class Actions extends Component {
         this.state = {
             stage: 'deal',
             betAmount: 0,
-            message: ''
-
+            messageToPlayer: ''
         }
+        this.updateActionsState = this.updateActionsState.bind(this);
     }
 
     updateActionsState(obj) {
-        console.log("Updating Actions State");
         this.setState(obj);
     }
 
@@ -27,10 +26,6 @@ class Actions extends Component {
         } else {
             this.setState({ betAmount: e.target.value });
         }
-    }
-
-    calculateCardCountingValue(card) {
-
     }
 
     getCards(numberOfCards) {
@@ -47,10 +42,10 @@ class Actions extends Component {
     }
     
     render() {
-        //  betAmount={this.state.betAmount}  stage={this.state.stage} 
+
         const { stage } = this.state;
         return (<div className="action-buttons-container">
-			<div className="bet-message">{this.state.message}</div>
+			<div className="bet-message">{this.state.messageToPlayer}</div>
 			<div className="bet-amount">
 				<label htmlFor="betAmount">Bet amount</label>
 				<input name="betAmount" onChange={e=>this.preventValueExceeding(e)} type="number" min="5"/>
